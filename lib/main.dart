@@ -58,10 +58,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 GestureDetector(
                   child: const Text('Anterior'),
                   onTap: () {
-                    _controller.jumpToPage(2);
+                    _controller.previousPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeIn);
                   },
                 ),
-                SmoothPageIndicator(controller: _controller, count: 3),
+                SmoothPageIndicator(
+                    controller: _controller,
+                    count: 3,
+                    onDotClicked: (index) {
+                      _controller.jumpToPage(index);
+                    }),
                 GestureDetector(
                   child: const Text('Próximo'),
                   onTap: () {
